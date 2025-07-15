@@ -1,0 +1,59 @@
+# Registration
+$(eval $(call addlib,libxml2))
+
+# Sources
+LIBXML2_VERSION = 2.14.5
+LIBXML2_URL = https://github.com/GNOME/libxml2/archive/refs/tags/v$(LIBXML2_VERSION).tar.gz
+$(eval $(call fetch,libxml2,$(LIBXML2_URL)))
+
+LIBXML2_SRC = $(LIBXML2_ORIGIN)/libxml2-$(LIBXML2_VERSION)
+
+# Common C flags
+LIBXML2_CFLAGS-y +=  -DHAVE_CONFIG_H -DPIC -DSYSCONFDIR="/usr/local/etc" -O2 -Wall -Wcast-align -Wextra -Wmissing-prototypes -Wno-array-bounds -Wno-format-extra-args -Wno-long-long -Wpointer-arith -Wshadow -Wstrict-prototypes -Wwrite-strings -fPIC -g -pedantic
+
+# Add generated config include
+LIBXML2_CINCLUDES-y += -I$(LIBXML2_BASE)/include
+
+# Add lib includes
+LIBXML2_CINCLUDES-y += -I$(LIBXML2_SRC)/include
+
+# Source files and their specific flags
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/HTMLparser.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/HTMLtree.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/SAX2.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/buf.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/c14n.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/catalog.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/chvalid.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/debugXML.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/dict.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/encoding.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/entities.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/error.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/globals.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/hash.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/list.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/parser.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/parserInternals.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/pattern.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/relaxng.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/schematron.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/threads.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/tree.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/uri.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/valid.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/xinclude.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/xlink.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/xmlIO.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/xmlmemory.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/xmlmodule.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/xmlreader.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/xmlregexp.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/xmlsave.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/xmlschemas.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/xmlschemastypes.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/xmlstring.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/xmlunicode.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/xmlwriter.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/xpath.c
+LIBXML2_SRCS-y += $(LIBXML2_SRC)/xpointer.c

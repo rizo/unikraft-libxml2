@@ -1,0 +1,19 @@
+spec: v0.6
+
+name: libxml2
+
+unikraft:
+  version: staging
+  kconfig:
+    CONFIG_LIBUKBUS: 'y'
+    CONFIG_LIBPOSIX_FDIO: 'y'
+    CONFIG_LIBUKNETDEV_EINFO_LIBPARAM: 'y'
+    CONFIG_LIBUKINTCTLR_GICV3: 'y'
+
+targets:
+- platform: qemu
+  arch: x86_64
+
+libraries:
+  musl: stable
+
