@@ -1,11 +1,12 @@
 # Registration
-$(eval $(call addlib,libxml2))
+$(eval $(call addlib_s,libxml2,$(CONFIG_LIBXML2)))
 
 # Sources
 LIBXML2_VERSION = 2.14.5
 LIBXML2_URL = https://github.com/GNOME/libxml2/archive/refs/tags/v$(LIBXML2_VERSION).tar.gz
 $(eval $(call fetch,libxml2,$(LIBXML2_URL)))
 
+# Helpers
 LIBXML2_SRC = $(LIBXML2_ORIGIN)/libxml2-$(LIBXML2_VERSION)
 
 # Common C flags
@@ -14,9 +15,11 @@ LIBXML2_CFLAGS-y +=  -DHAVE_CONFIG_H -DPIC -DSYSCONFDIR="/usr/local/etc" -O2 -Wa
 # Add generated config include
 LIBXML2_CINCLUDES-y += -I$(LIBXML2_BASE)/include
 
-# Add lib includes
-CINCLUDES-$(CONFIG_LIBXML2) += -I$(LIBXML2_BUILD)/include
+# Lib includes
 LIBXML2_CINCLUDES-y += -I$(LIBXML2_SRC)/include
+
+# Add to global includes
+CINCLUDES-$(CONFIG_LIBXML2) += -I$(LIBXML2_SRC)/include
 
 # Source files and their specific flags
 LIBXML2_SRCS-y += $(LIBXML2_SRC)/HTMLparser.c

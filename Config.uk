@@ -2,4 +2,5 @@ menuconfig LIBXML2
 	bool "libxml2"
 	default n
 	depends on HAVE_LIBC
-
+	select LIBPOSIX_USER
+	select LIBUKTIME
