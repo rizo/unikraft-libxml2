@@ -12,9 +12,6 @@ LIBXML2_SRC = $(LIBXML2_ORIGIN)/libxml2-$(LIBXML2_VERSION)
 # Common C flags
 LIBXML2_CFLAGS-y +=  -DHAVE_CONFIG_H -DPIC -DSYSCONFDIR="/usr/local/etc" -O2 -Wall -Wcast-align -Wextra -Wmissing-prototypes -Wno-array-bounds -Wno-format-extra-args -Wno-long-long -Wpointer-arith -Wshadow -Wstrict-prototypes -Wwrite-strings -fPIC -g -pedantic
 
-# Add generated config include
-LIBXML2_CINCLUDES-y += -I$(LIBXML2_BASE)/include
-
 # Lib includes
 LIBXML2_CINCLUDES-y += -I$(LIBXML2_SRC)/include
 
